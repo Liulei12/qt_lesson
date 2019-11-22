@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Node.js聊天室</title>
+</head>
+<body>
+    <h1>欢迎各位来到聊天室</h1>
+    <h2>对你 你没有看错 </h2>
+    <input type="text" id="msg">
+    <button onclick="sendMsg()">send</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+    <script>
+       var socket = io.connect('/');
+       
+       function sendMsg(){
+            var msg = document.getElementById('msg').value;//获取文本框内容
+            socket.send(msg)
+            document.getElementById('msg').value = "";//清空内容
+       }
+       socket.on('message',function(msg){
+          var div =  document.createElement('div');
+          div.innerHTML = msg
+          document.body.appendChild(div);
+       });
+
+    </script>
+</body>
+</html>
