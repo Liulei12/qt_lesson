@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>这是一个koa服务的iframe 网页</div>
+    <script>
+        window.onload = function(){
+            window.onmessage = function(e){
+                console.log(e.data)
+                const {key,value} = e.data;
+                if(!value){
+                    let data = JSON.parse(localStorage.getItem(key));
+                    // 当前页面 被iframe引入
+                    window.parent.postMessage(data,'http://127.0.0.1:62683');
+                }else{
+                    localStorage.setItem(key,JSON.stringify(value));
+                }
+                localStorage.setItem(key,JSON.stringify(value));
+            }   
+        }
+    </script>
+</body>
+</html>
