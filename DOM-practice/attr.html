@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .red{
+        color: red;
+    }
+    .blue{
+        color: blue;
+    }
+    </style>
+</head>
+<body>
+    <div class="red" id="#box" data-index="1">
+        <!-- data-index自定义属性 -->
+        box
+    </div>
+    <script>
+        var box = document.querySelector('.red')
+        var className = box.getAttribute('class');
+        console.log('className',className);
+        box.setAttribute('class','blue');
+        console.log(box.dataset.index);
+        console.log('all names',box.getAttributeNames());
+
+    </script>    
+</body>
+</html>

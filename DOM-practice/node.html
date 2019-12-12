@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <li>1</li>
+    </div>
+    <script>
+        var box = document.getElementById('box');
+        // console.log(box.firstChild.firstChild.nodeType);
+        console.log(box.firstElementChild);
+        const liNode = document.createElement('li');
+        const text = document.createTextNode('0');
+        liNode.appendChild(text);
+        box.insertBefore(liNode,box.firstElementChild);
+        //1 通过 remove()
+        const lis = box.querySelectorAll('li');
+        for(let i=0;i<lis.length;i++){
+            lis[i].addEventListener('click',function(){
+                // lis[i].remove();
+                box.removeChild(lis[i]);
+            })
+        }
+    </script>
+</body>
+</html>
