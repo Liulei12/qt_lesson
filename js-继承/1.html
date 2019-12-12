@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       function Person() {
+           this.age = 40;
+       }
+       Person.prototype.say = function(){}
+       console.log(Person.prototype)
+       // Object
+       var obj = {}
+       obj.hasOwnProperty('b')
+       console.log(obj.__proto__ === Object.prototype)  // true //这个very important
+       var p = new Person()
+       console.log(p.say)
+
+    // 2
+       function Student() {
+           Student.prototype = new Person()
+        //    p.__proto__ = Person.prototype 
+        //    Student.prototype.__proto__ = Person.prototype
+       }
+
+    //    Object.create(); // 浅复制
+       function Student1() {};
+       Student.prototype = Object.create(Person.prototype)
+       var s = new Student1();
+       console.log(s)
+       // 继承方法 没有属性
+       function myCreate(){
+           var F = function() {
+               F.prototype = obj;
+               return new F()
+           }
+       }
+
+    // 3 es6 extends 使用的方法
+    function Student3(){
+        // 1 继承属性 
+        Person.call(this);
+    }
+    Student3.prototype = Object.create(Person.prototype)
+    Student3.prototype.constructor = Student3
+    </script>
+</body>
+</html>

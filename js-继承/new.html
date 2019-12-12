@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Student() {
+      this.age = 40;
+    }
+    Student.prototype.say = function () { }
+    var s = new Student();
+    s = {
+      age: 40,
+      __proto__: {
+        say: function () {}
+      }
+    }
+    function myNew(constructor, ...args) {
+      // 1. 生成一个对象
+      let obj = {}
+      // 2. 获取属性
+      constructor.apply(obj, args)
+      // 3. 获取原型链
+      obj.__proto__ = constructor.prototype
+      // 4. 返回一个对象
+      return obj
+    }
+
+  </script>
+</body>
+
+</html>
