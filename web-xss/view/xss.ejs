@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    xss 演示：
+    <a href="http://localhost:8080?xss=<script>alert(123)</script>">demo1</a>
+    
+
+    <!-- - 不转义 = 转义 -->
+    <%- xss %>
+</body>
+</html>
